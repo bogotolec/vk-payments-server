@@ -9,11 +9,24 @@ disable_ads = {
 	}
 }
 
+confirm_purchase = {
+	"response": {
+		"order_id": ,
+		"app_order_id":
+	}
+}
+
 class HttpGetHandler(BaseHTTPRequestHandler):
     """Обработчик с реализованным методом do_GET."""
 
     def do_POST(self):
         self.send_response(200)
+
+        print(self.headers)
+        content_length = int(self.headers['Content-Length']) # <--- Gets the size of data
+        post_data = self.rfile.read(content_length)
+
+        print(post_data)
 
         response = json.dumps(disable_ads)
 
