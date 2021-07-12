@@ -36,7 +36,12 @@ class HttpGetHandler(BaseHTTPRequestHandler):
 
         print(request)
 
-        response = json.dumps(disable_ads)
+        if b"get_item" in request[b'notification_type']:
+        	response = json.dumps(disable_ads)
+        elif b"order_status_change" in request[b'notification_type']:
+        	response = confirm_purchase
+        	response["response"]["order_id"] = int(request[b'order_id'].decode())
+        	response["response"]["app_order_id"] = response["response"]["order_id"]
 
         self.send_header("Content-type", "text/json")
         self.end_headers()
