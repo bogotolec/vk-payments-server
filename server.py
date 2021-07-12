@@ -11,8 +11,8 @@ disable_ads = {
 
 confirm_purchase = {
 	"response": {
-		"order_id": ,
-		"app_order_id":
+		"order_id": 123,
+		"app_order_id": 123
 	}
 }
 
