@@ -28,6 +28,14 @@ class HttpGetHandler(BaseHTTPRequestHandler):
 
         print(post_data)
 
+        request = dict()
+
+        for s in post_data.split("&"):
+        	for k, v in s.split("="):
+        		request[k] = v
+
+        print(request)
+
         response = json.dumps(disable_ads)
 
         self.send_header("Content-type", "text/json")
