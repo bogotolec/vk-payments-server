@@ -42,6 +42,7 @@ class HttpGetHandler(BaseHTTPRequestHandler):
         	response = confirm_purchase
         	response["response"]["order_id"] = int(request[b'order_id'].decode())
         	response["response"]["app_order_id"] = response["response"]["order_id"]
+        	response = json.dumps(response)
 
         self.send_header("Content-type", "text/json")
         self.end_headers()
