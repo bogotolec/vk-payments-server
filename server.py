@@ -31,9 +31,8 @@ class HttpGetHandler(BaseHTTPRequestHandler):
         request = dict()
 
         for s in post_data.split(b"&"):
-        	print(s)
-        	for k, v in s.split(b"="):
-        		request[k] = v
+        	splitted = s.split(b"=")
+        	request[splitted[0]] = splitted[1]
 
         print(request)
 
